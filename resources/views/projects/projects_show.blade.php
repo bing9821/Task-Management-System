@@ -19,7 +19,7 @@
         <div class="flex items-center justify-between">
             <h2 class="text-xl font-semibold">Tasks</h2>
 
-            <a href="{{ route('projects.tasks.create', $project) }}" class="rounded-md bg-black px-4 py-2 text-sm text-gray">
+            <a href="{{ route('projects.tasks.create', $project) }}" class="rounded-md bg-black px-4 py-2 text-sm text-white">
                 Add Task
             </a>
         </div>

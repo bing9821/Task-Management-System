@@ -6,7 +6,7 @@
                 <p class="text-sm text-gray-500">Manage your project list.</p>
             </div>
 
-            <a href="{{ route('projects.create') }}" class="rounded-md bg-black px-4 py-2 text-sm text-gray">
+            <a href="{{ route('projects.create') }}" class="rounded-md bg-black px-4 py-2 text-sm text-white">
                 Create Project
             </a>
         </div>

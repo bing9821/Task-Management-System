@@ -30,9 +30,13 @@
                 </flux:sidebar.item>
             </flux:sidebar.nav>
 
-            <x-desktop-user-menu class="hidden lg:block" :name="auth()->user()->name" />
+            @auth
+                <x-desktop-user-menu class="hidden lg:block" :name="auth()->user()->name" />
+            @endauth
+
         </flux:sidebar>
 
+        @auth
         <!-- Mobile User Menu -->
         <flux:header class="lg:hidden">
             <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left" />
@@ -87,6 +91,7 @@
                 </flux:menu>
             </flux:dropdown>
         </flux:header>
+        @endauth
 
         {{ $slot }}
 

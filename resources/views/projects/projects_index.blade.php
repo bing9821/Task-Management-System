@@ -1,12 +1,12 @@
 <x-layouts::app :title="__('Projects')">
-    <div class="mx-auto max-w-4xl space-y-6">
+    <div class="page-container space-y-6">
         <div class="flex items-center justify-between">
             <div>
                 <h1 class="text-2xl font-semibold">Projects</h1>
                 <p class="text-sm text-gray-500">Manage your project list.</p>
             </div>
 
-            <a href="{{ route('projects.create') }}" class="rounded-md bg-black px-4 py-2 text-sm text-white">
+            <a href="{{ route('projects.create') }}" class="primary-button">
                 Create Project
             </a>
         </div>
@@ -30,14 +30,14 @@
                         </div>
 
                         <div class="flex items-center gap-3">
-                            <a href="{{ route('projects.show', $project) }}" class="text-sm text-gray-700">View</a>
-                            <a href="{{ route('projects.edit', $project) }}" class="text-sm text-blue-600">Edit</a>
+                            <a href="{{ route('projects.show', $project) }}" class="secondary-link">View</a>
+                            <a href="{{ route('projects.edit', $project) }}" class="secondary-link">Edit</a>
 
                             <form method="POST" action="{{ route('projects.destroy', $project) }}">
                                 @csrf
                                 @method('DELETE')
 
-                                <button type="submit" class="text-sm text-red-600">
+                                <button type="submit" class="danger-button">
                                     Delete
                                 </button>
                             </form>
@@ -47,7 +47,7 @@
             @empty
                 <div class="rounded-lg border border-dashed border-gray-300 p-8 text-center">
                     <p class="text-gray-500">No projects yet.</p>
-                    <a href="{{ route('projects.create') }}" class="mt-3 inline-block text-sm text-blue-600">
+                    <a href="{{ route('projects.create') }}" class="primary-button">
                         Create your first project
                     </a>
                 </div>

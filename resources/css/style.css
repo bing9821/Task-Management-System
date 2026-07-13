@@ -1,6 +1,66 @@
 .page-container {
-    max-width: 56rem;
-    margin: 0 auto;
+    max-width: 42rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-card{
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 24px;
+    background-color: #ffffff;
+}
+
+.form-label{
+    display:block;
+    font-size:14px;
+    font-weight:500;
+    color: #374151;
+}
+
+.form-input {
+    width:100%;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    padding:8px 12px;
+}
+
+.form-error {
+    margin-top:4px;
+    font-size: 14px;
+    color: #dc2626;
+}
+
+.primary-button {
+    border : 1px solid #000000;
+    border-radius: 6px;
+    background-color:#000000;
+    color: #ffffff;
+    padding: 8px 16px;
+    transition: all 0.25s ease;
+}
+
+.primary-button:hover {
+    background-color:#ffffff;
+    color: #000000;
+}
+
+.secondary-link{
+    font-size: 14px;
+    color: #4b5563
+}
+
+.secondary-link:hover{
+    color: #111827;
+}
+
+.danger-button {
+    font-size:14px;
+    color:#dc2626;
+}
+
+.danger-button:hover {
+    color: #991b1b;
 }
 
 .auth-card {

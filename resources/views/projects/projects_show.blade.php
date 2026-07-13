@@ -1,7 +1,7 @@
 <x-layouts::app :title="$project->name">
-    <div class="mx-auto max-w-4xl space-y-6">
+    <div class="page-container space-y-6">
         <div>
-            <a href="{{ route('projects.index') }}" class="text-sm text-gray-600">Back to Projects</a>
+            <a href="{{ route('projects.index') }}" class="secondary-link">Back to Projects</a>
 
             <div class="mt-4">
                 <h1 class="text-2xl font-semibold">{{ $project->name }}</h1>
@@ -19,7 +19,7 @@
         <div class="flex items-center justify-between">
             <h2 class="text-xl font-semibold">Tasks</h2>
 
-            <a href="{{ route('projects.tasks.create', $project) }}" class="rounded-md bg-black px-4 py-2 text-sm text-white">
+            <a href="{{ route('projects.tasks.create', $project) }}" class="primary-button">
                 Add Task
             </a>
         </div>
@@ -47,7 +47,7 @@
                     </div>
 
                     <div class="flex items-center gap-3">
-                        <a href="{{ route('tasks.edit', $task) }}" class="text-sm text-blue-600">
+                        <a href="{{ route('tasks.edit', $task) }}" class="secondary-link">
                             Edit
                         </a>
 
@@ -55,7 +55,7 @@
                         @csrf
                         @method('DELETE')
 
-                            <button type="submit" class="text-sm text-red-600">
+                            <button type="submit" class="danger-button">
                                 Delete
                             </button>
                         </form> 

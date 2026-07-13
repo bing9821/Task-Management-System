@@ -1,7 +1,7 @@
 <x-layouts::app :title="__('Edit Project')">
-    <div class="mx-auto max-w-2xl space-y-6">
+    <div class="page-container space-y-6">
         <div>
-            <a href="{{ route('projects.show', $project) }}" class="text-sm text-blue-600">
+            <a href="{{ route('projects.show', $project) }}" class="secondary-link">
                Back to Project
             </a>
 
@@ -11,44 +11,41 @@
             </p>
         </div>
 
-        <form method= "POST" action="{{ route ('projects.update', $project) }}" class="space-y-5 rounded-lg border border-gray-200 p-6">
+        <form method= "POST" action="{{ route ('projects.update', $project) }}" class="form-card space-y-5">
             @csrf
             @method('PUT')
 
             <div class="space-y-2">
-                <label class="block text-sm font-medium text-gray-700">Project Name</label>
+                <label class="form-label">Project Name</label>
+
                 <input 
                     type ="text" 
                     name ="name" 
                     value="{{ old ('name', $project-> name) }}" 
-                    class="w-full rounded-md border border-gray-300 px-3 py-2"> Project Name</label>
-                    <input
-                    type ="text"
-                    name="name"
-                    value="{{ old('name', $project->name) }}"
-                    class="w-full rounded-md border border-gray-300 px-3 py-2"
+                    class="form-input"
                     >
 
                 @error('name')
-                    <p class="text-sm text-red-600">{{ $message }}</p>
+                    <p class="form-error">{{ $message }}</p>
                 @enderror
             </div>
 
             <div class="space-y-2">
-                <label class="block text-sm font-medium text-gray-700">Description</label>
+                <label class="form-label">Description</label>
+
                 <textarea 
                     name="description"
                     rows="4"
-                    class="w-full rounded-md border border-gray-300 px-3 py-2"
+                    class="form-input"
                 >{{old('description', $project->description) }}</textarea>
             </div>
 
             <div class="flex items-center gap-3">
-                <button type="submit" class="rounded-md bg-black px-4 py-2 text-white">
+                <button type="submit" class="primary-button">
                     Save Changes
                 </button>
 
-                <a href="{{ route('projects.show', $project) }}" class="text-sm text-gray-600">
+                <a href="{{ route('projects.show', $project) }}" class="secondary-link">
                     Cancel
                 </a>
             </div>

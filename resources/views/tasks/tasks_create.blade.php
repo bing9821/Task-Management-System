@@ -1,7 +1,7 @@
 <x-layouts::app :title="__('Create Task')">
-    <div class="mx-auto max-w-2xl space-y-6">
+    <div class="page-container space-y-6">
         <div>
-            <a href="{{ route('projects.show', $project) }}" class="text-sm text-gray-600">
+            <a href="{{ route('projects.show', $project) }}" class="secondary-link">
                 Back to Project
             </a>
 
@@ -11,37 +11,37 @@
             </p>
         </div>
 
-        <form method="POST" action="{{ route('projects.tasks.store', $project) }}" class="space-y-5 rounded-lg border border-gray-200 p-6">
+        <form method="POST" action="{{ route('projects.tasks.store', $project) }}" class="form-card space-y-5">
             @csrf
 
             <div class="space-y-2">
-                <label class="block text-sm font-medium">Task Title</label>
+                <label class="form-label">Task Title</label>
                 <input
                     type="text"
                     name="title"
                     value="{{ old('title') }}"
-                    class="w-full rounded-md border border-gray-300 px-3 py-2"
+                    class="form-input"
                     placeholder="e.g. Create task migration"
                 >
 
                 @error('title')
-                    <p class="text-sm text-red-600">{{ $message }}</p>
+                    <p class="form-error">{{ $message }}</p>
                 @enderror
             </div>
 
             <div class="space-y-2">
-                <label class="block text-sm font-medium">Description</label>
+                <label class="form-label">Description</label>
                 <textarea
                     name="description"
                     rows="4"
-                    class="w-full rounded-md border border-gray-300 px-3 py-2"
+                    class="form-input"
                     placeholder="Optional task notes"
                 >{{ old('description') }}</textarea>
             </div>
 
             <div class="space-y-2">
-                <label class="block text-sm font-medium">Status</label>
-                <select name="status" class="w-full rounded-md border border-gray-300 px-3 py-2">
+                <label class="form-label">Status</label>
+                <select name="status" class="form-input">
                     <option value="todo" @selected(old('status') === 'todo')>Todo</option>
                     <option value="in_progress" @selected(old('status') === 'in_progress')>In Progress</option>
                     <option value="done" @selected(old('status') === 'done')>Done</option>
@@ -49,8 +49,8 @@
             </div>
 
             <div class="space-y-2">
-                <label class="block text-sm font-medium">Priority</label>
-                <select name="priority" class="w-full rounded-md border border-gray-300 px-3 py-2">
+                <label class="form-label">Priority</label>
+                <select name="priority" class="form-input">
                     <option value="low" @selected(old('priority') === 'low')>Low</option>
                     <option value="medium" @selected(old('priority', 'medium') === 'medium')>Medium</option>
                     <option value="high" @selected(old('priority') === 'high')>High</option>
@@ -58,21 +58,21 @@
             </div>
 
             <div class="space-y-2">
-                <label class="block text-sm font-medium">Due Date</label>
+                <label class="form-label">Due Date</label>
                 <input
                     type="date"
                     name="due_date"
                     value="{{ old('due_date') }}"
-                    class="w-full rounded-md border border-gray-300 px-3 py-2"
+                    class="form-input"
                 >
             </div>
 
             <div class="flex items-center gap-3">
-                <button type="submit" class="rounded-md bg-black px-4 py-2 text-white">
+                <button type="submit" class="primary-button">
                     Save Task
                 </button>
 
-                <a href="{{ route('projects.show', $project) }}" class="text-sm text-gray-600">
+                <a href="{{ route('projects.show', $project) }}" class="secondary-link">
                     Cancel
                 </a>
             </div>

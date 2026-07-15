@@ -6,6 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
+    public const STATUSES =[
+        'todo' => 'Todo',
+        'in_progress' => 'In Progress',
+        'completed' => 'Completed', 
+    ];
+
+    public const PRIORITIES = [
+        'low' => 'Low',
+        'medium' => 'Medium',
+        'high' => ' High',
+    ];
+    
     protected $fillable = [
         'title',
         'description',

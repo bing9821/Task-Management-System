@@ -12,5 +12,7 @@
                         Logout
                     </button>
                 </form>
+            </div>
+        </div>
     </div>
 </x-layouts::app>

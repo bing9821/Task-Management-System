@@ -9,7 +9,7 @@ class Task extends Model
     public const STATUSES =[
         'todo' => 'Todo',
         'in_progress' => 'In Progress',
-        'completed' => 'Completed', 
+        'done' => 'Done', 
     ];
 
     public const PRIORITIES = [

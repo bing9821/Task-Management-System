@@ -45,7 +45,7 @@
 
                 <select name="status" class="form-input">
                     @foreach(\App\Models\Project:: STATUSES as $value => $label)
-                        <option value="{{ $value }}" @selected(old('status', 'not_started') === $value)>
+                        <option value="{{ $value }}" @selected(old('status', $project->status) === $value)>
                             {{ $label }}
                         </option>
                     @endforeach

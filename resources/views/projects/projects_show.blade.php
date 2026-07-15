@@ -16,8 +16,8 @@
             </div>
         </div>
 
-        <form method="GET" action="{{ route('projects.show', $project) }}" class="form-card">
-            <div class="relative">
+        <form method="GET" action="{{ route('projects.show', $project) }}" class="form-card space-y-3">
+            <div class="relative w-full">
                 <flux:icon.search class="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-gray-400" />
 
                 <input
@@ -30,14 +30,26 @@
 
                 @if(!empty($search))
                     <a
-                        href="{{ route('projects.show', $project) }}"
+                        href="{{ route('projects.show', $project, ['status' => $status ?? null]) }}"
                         class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
                     >
 
-                        <flux:icon.x-mark class="size-4 y-1" />
+                        <flux:icon.x-mark class="size-4" />
                     </a>
                 @endif
-            </div>  
+            </div> 
+            
+            <div class="flex justify-end">
+                <select name="status" class="form-input max-w-xs" onchange="this.form.submit()">
+                    <option value="">All statuses</option>
+
+                    @foreach($statuses as $value => $label)
+                        <option value="{{ $value }}" @selected(($status ?? '') === $value)>
+                            {{ $label }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
         </form>
         
         <div class="flex items-center justify-between">
@@ -91,6 +103,9 @@
                     <p class="text-gray-500">No tasks yet.</p>
                 </div>
             @endforelse
+
+            <div>
+                {{ $tasks->links() }}
             </div>
     </div>
 </x-layouts::app>

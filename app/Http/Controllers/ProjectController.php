@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
@@ -25,8 +26,13 @@ class ProjectController extends Controller
                     });
                 }
             })
+            ->when($request->status, function ($query, $status) {
+                $query->where('status', $status);
+            })
+
             ->latest() //Order newest first, using created_at
-            ->get(); // Get the result from database
+            ->paginate(4)
+            ->withQueryString();
 
             // Return the view with the projects data
             return view('projects.projects_index', [
@@ -35,6 +41,8 @@ class ProjectController extends Controller
                 // anothter way to pass the projects variable to the view is to use the compact() function, which creates an array containing variables and their values. e.g. return view('projects.index', compact('projects'));
                 'projects' => $projects,
                 'search' => $request->search,
+                'status' => $request->status,
+                'statuses' => Project::STATUSES,
             ]);
     }
 
@@ -84,13 +92,19 @@ class ProjectController extends Controller
                     });
                 }
             })
+            ->when($request->status, function ($query, $status){
+                $query->where('status',$status);
+            })
             ->latest()
-            ->get();
+            ->paginate(4)
+            ->withQueryString();
 
         return view('projects.projects_show', [
             'project' => $project,
             'tasks' =>$tasks,
             'search' => $request->search,
+            'status' => $request->status,
+            'statuses' =>Task::STATUSES,
         ]);
     }
 
@@ -114,6 +128,7 @@ class ProjectController extends Controller
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
+            'status' => ['required', Rule::in(array_keys( Project::STATUSES))],
         ]);
 
         $project->update($validated);

@@ -31,4 +31,11 @@ return new class extends Migration
     {
         Schema::dropIfExists('tasks');
     }
+
+    public const STATUES =[
+        'not_started' => 'Not Started',
+        'in_progress' =>'In Progress',
+        'completed' => 'Completed',
+        'on_hold' => 'On Hold',
+    ];
 };

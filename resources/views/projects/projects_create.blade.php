@@ -35,6 +35,20 @@
                 >{{ old('description') }}</textarea>
             </div>
 
+            <div class="space-y-2">
+                <label class="form-label">Status</label>
+
+            <select name="status" class="form-input">
+                @foreach(\App\Models\Project::STATUSES as $value => $label)
+                    <option value="{{ $value }}" @selected(old('status', 'not_started') === $value)>
+                        {{ $label }}
+                    </option>
+                @endforeach
+            </select>
+
+            @error('status')
+                <p class="form-error">{{ $message }}</p>
+            @enderror
             <div class="flex items-center gap-3">
                 <button type="submit" class="primary-button">
                     Save

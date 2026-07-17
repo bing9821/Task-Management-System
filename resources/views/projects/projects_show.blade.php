@@ -88,7 +88,11 @@
                             Edit
                         </a>
 
-                        <form method="POST" action="{{ route('tasks.destroy', $task) }}">
+                        <form 
+                            method="POST" 
+                            action="{{ route('tasks.destroy', $task) }}"
+                            onsubmit="return confirm('Are you sure you want to delete this project?')"
+                        >
                         @csrf
                         @method('DELETE')
 

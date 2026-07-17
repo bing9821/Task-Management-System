@@ -73,7 +73,10 @@
                             <a href="{{ route('projects.show', $project) }}" class="secondary-link">View</a>
                             <a href="{{ route('projects.edit', $project) }}" class="secondary-link">Edit</a>
 
-                            <form method="POST" action="{{ route('projects.destroy', $project) }}">
+                            <form 
+                                method="POST" 
+                                action="{{ route('projects.destroy', $project) }}"
+                                onsubmit="return confirm('Are you sure you want to delete this project?'>
                                 @csrf
                                 @method('DELETE')
 
